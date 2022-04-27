@@ -21,16 +21,16 @@ namespace RestauranteWebAPI.Controllers
         }
         // GET: api/<ProductosController>
         [HttpGet]
-        public IEnumerable<Pedido> Get()
+        public IEnumerable<Producto> Get()
         {
-            return _context.Pedidos.ToList();
+            return _context.Productos.ToList();
         }
 
         // GET api/<ProductosController>/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            Pedido ped = _context.Pedidos.Find(id);
+            Producto ped = _context.Productos.Find(id);
             if(ped != null)
             {
                 return Ok(ped);
@@ -40,19 +40,19 @@ namespace RestauranteWebAPI.Controllers
 
         // POST api/<ProductosController>
         [HttpPost]
-        public IActionResult Post([FromBody] Pedido pedido)
+        public IActionResult Post([FromBody] Producto producto)
         {
-            _context.Pedidos.Add(pedido);
+            _context.Productos.Add(producto);
             _context.SaveChanges();
 
-            return Ok(pedido);
+            return Ok(producto);
         }
 
         // PUT api/<ProductosController>/5
         [HttpPut("{id}")]
-        public void Put([FromBody] Pedido model)
+        public void Put([FromBody] Producto model)
         {
-            var att = _context.Pedidos.Attach(model);
+            var att = _context.Productos.Attach(model);
             att.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();
         }
@@ -61,8 +61,8 @@ namespace RestauranteWebAPI.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            Pedido p = _context.Pedidos.Find(id);
-            _context.Pedidos.Remove(p);
+            Producto p = _context.Productos.Find(id);
+            _context.Productos.Remove(p);
             _context.SaveChanges();
         }
     }

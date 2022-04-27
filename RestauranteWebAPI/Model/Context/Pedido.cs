@@ -13,23 +13,23 @@ namespace RestauranteWebAPI.Model.Context
     {
         [Key]
         [Column("ID")]
-        public long Id { get; set; }
+        public int Id { get; set; }
         [Column("NOMBRE_PRODUCTO")]
         public string NombreProducto { get; set; }
         [Column("DESCRIPCION")]
         public string Descripcion { get; set; }
         [Column("PRECIO", TypeName = "NUMERIC")]
-        public byte[] Precio { get; set; }
+        public float Precio { get; set; }
         [Column("FOTO")]
         public string Foto { get; set; }
         [Column("CATEGORIA", TypeName = "VARCHAR(50)")]
         public string Categoria { get; set; }
         [Column("CANTIDAD")]
-        public long? Cantidad { get; set; }
+        public int Cantidad { get; set; }
         [Column("ESTADO")]
-        public long? Estado { get; set; }
+        public string Estado { get; set; }
         [Column("ID_USUARIO")]
-        public long? IdUsuario { get; set; }
+        public int IdUsuario { get; set; }
         [Column("COMENTARIO")]
         public string Comentario { get; set; }
 
