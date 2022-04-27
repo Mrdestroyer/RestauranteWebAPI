@@ -37,10 +37,12 @@ namespace RestauranteWebAPI.Controllers
 
 
         // POST api/<UsuarioController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        [HttpPost]
+        public void Post([FromBody] Usuario user)
+        {
+            _dbContext.Usuarios.Add(user);
+            _dbContext.SaveChanges();
+        }
 
         //// PUT api/<UsuarioController>/5
         //[HttpPut("{id}")]
