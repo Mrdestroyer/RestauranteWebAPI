@@ -44,25 +44,30 @@ namespace RestauranteWebAPI.Controllers
         }
 
 
-
-
         //// POST api/<PedidosController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-
-        //}
+        [HttpPost]
+        public void Post([FromBody] Pedido pedido)
+        {
+            _context.Pedidos.Add(pedido);
+            _context.SaveChanges();
+        }
 
         //// PUT api/<PedidosController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+        [HttpPut("{id}")]
+        public void Put([FromBody] Pedido model)
+        {
+            var att = _context.Pedidos.Attach(model);
+            att.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.SaveChanges();
+        }
 
         //// DELETE api/<PedidosController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            Pedido p = _context.Pedidos.Find(id);
+            _context.Pedidos.Remove(p);
+            _context.SaveChanges();
+        }
     }
 }
