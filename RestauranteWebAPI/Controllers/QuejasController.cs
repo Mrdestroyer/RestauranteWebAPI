@@ -34,24 +34,31 @@ namespace RestauranteWebAPI.Controllers
             return u;
         }
 
-
-
         // POST api/<UsuarioController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        [HttpPost]
+        public void Post(Queja queja)
+        {
+            _dbContext.Quejas.Add(queja);
+            _dbContext.SaveChanges();
+        }
 
         //// PUT api/<UsuarioController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+        [HttpPut]
+        public void Put([FromBody] Queja model)
+        {
+            var att = _dbContext.Quejas.Attach(model);
+            att.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+
+            _dbContext.SaveChanges();
+        }
 
         //// DELETE api/<UsuarioController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            Queja q = _dbContext.Quejas.Find(id);
+            _dbContext.Quejas.Remove(q);
+            _dbContext.SaveChanges();
+        }
     }
 }
