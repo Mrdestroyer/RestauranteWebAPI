@@ -18,7 +18,7 @@ namespace RestauranteWebAPI.Model.Context
 
         [Key]
         [Column("ID")]
-        public long Id { get; set; }
+        public int Id { get; set; }
         [Required]
         [Column("NOMBRE_USUARIO", TypeName = "VARCHAR(60)")]
         public string NombreUsuario { get; set; }
